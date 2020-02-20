@@ -47,6 +47,6 @@ for sigma in paths:
         eventid = create_new_event()
     print("Importing Sigma rule {} into MISP event {}...".format(sigma, eventid, end=""))
     f = sigma.open("rt")
-    misp.add_named_attribute(eventid, "sigma", f.read())
+    misp.add_attribute(eventid, {"type": "sigma", "value": f.read()})
     f.close()
     first = False
